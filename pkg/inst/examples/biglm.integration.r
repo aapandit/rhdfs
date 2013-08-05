@@ -61,9 +61,9 @@ library(rhdfs)
 library(biglm)
 hdfs.init()
 
-p <- reader.for.hdfs("/airline/data/1987.csv",
+p <- reader.for.hdfs("Downloads/2007_small.csv",
                      batchsize=5000,buff=as.integer(10*1024^2),
                      F=airlineparse,discard.header=TRUE)
 tm <- system.time({
-  a <- bigglm(ArrDelay~DayOfWeek,data=p,maxit=3)
+  a <- biglm(ArrDelay~DayOfWeek,data=p,maxit=3)
 })
